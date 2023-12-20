@@ -86,7 +86,6 @@ curl --location --request POST 'http://127.0.0.1:5000/weather/bulk'
 @app.route("/weather/bulk", methods = ["POST"])
 @cache.cached(timeout=7200)
 def bulk():
-    print("hi")
     try:
       # Get weather data from the request
        weather_data = request.get_json()

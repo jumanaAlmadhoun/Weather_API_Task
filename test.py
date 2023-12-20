@@ -24,7 +24,7 @@ class FlaskTest(unittest.TestCase):
 
     
 
-
+    #Check for th POST request
     def setUp(self):
         # Create a test client for the Flask app
         self.app = app.test_client()
@@ -53,9 +53,16 @@ class FlaskTest(unittest.TestCase):
         # Parse the response JSON
         response_data = json.loads(response.get_data(as_text=True))
 
-        # Check if the expected data is present in the response
-        self.assertIn("received", response_data)
-        self.assertEqual(response_data["received"], test_data["message"])
+        # Extract the received City Name from the list of dictionaries
+        received_cityName = [item["city_name"] for item in response_data]
+
+        # Extract the expected City Name from the test data
+        expected_cityName = [city["cityName"] for city in test_data]
+
+        # Assert that the received temperatures match the expected cities
+        self.assertEqual(received_cityName, expected_cityName)
+
+       
 
 
 
