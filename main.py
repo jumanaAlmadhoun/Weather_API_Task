@@ -104,7 +104,7 @@ def bulk():
        cache.set('bulk_data', response.json(), timeout=7200)
 
       # Parse the API response
-       data = response.json()
+       data = json.loads(response.text)
       
       # Extract neded weather information from the response
        weather = []
