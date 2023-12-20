@@ -1,0 +1,6 @@
+#run this command to install all req of the apllication pip install -r requirements.txt
+Flask==2.2.2
+Flask_Caching==2.1.0
+Requests==2.31.0
+
+#just run test.py file to excute unit testing code
