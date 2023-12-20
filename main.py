@@ -32,10 +32,8 @@ def get_city(city_name):
         # Make the request to the weather API
         url = "http://api.weatherapi.com/v1/current.json?key=b4878c84201e41708a693727231612&q=" + city_name
         response = requests.get(url)
-        response.raise_for_status()  # Raise an HTTPError for bad responses
-
-        # Parse the API response
-        data = response.json()
+        data = json.loads(response.text)
+        
 
         # Extract neded weather information from the response
         weather = {
