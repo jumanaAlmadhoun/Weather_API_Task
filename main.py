@@ -84,7 +84,7 @@ curl --location --request POST 'http://127.0.0.1:5000/weather/bulk'
 ]
 """
 @app.route("/weather/bulk", methods = ["POST"])
-@cache.cached(timeout=7200, make_cache_key="bulk_data")
+@cache.cached(timeout=7200)
 def bulk():
     print("hi")
     try:
@@ -103,7 +103,8 @@ def bulk():
        headers = {'Content-Type': 'application/json'}
        response = requests.request("POST", url, headers=headers, data=payload)
        
-       cache.set('bulk_data', response.json(), timeout=300)
+       #to cach the response with dict type to use it on statistics() endpoint
+       cache.set('bulk_data', response.json(), timeout=7200)
 
       # Parse the API response
        data = response.json()

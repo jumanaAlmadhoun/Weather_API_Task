@@ -29,7 +29,7 @@ class FlaskTest(unittest.TestCase):
         # Create a test client for the Flask app
         self.app = app.test_client()
 
-    def test_post_example_endpoint(self):
+    def test_bulk_endpoint(self):
         # Define test data for the POST request
         test_data = [ 
         {
